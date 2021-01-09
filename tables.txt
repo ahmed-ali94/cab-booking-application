@@ -1,0 +1,42 @@
+Database: s101383139_db
+
+
+User Table:
+
+CREATE TABLE `user` (
+ `Userid` varchar(10) NOT NULL,
+ `pw` varchar(10) NOT NULL
+);
+
+Customer Table: 
+
+CREATE TABLE `Customer` (
+ `Customer_Name` varchar(20) NOT NULL,
+ `Customer_Password` varchar(50) NOT NULL,
+ `Email` varchar(50) NOT NULL,
+ `Phone` varchar(50) NOT NULL,
+ PRIMARY KEY (`Email`)
+);
+
+
+Booking Table:
+
+CREATE TABLE `Booking` (
+ `Booking_id` varchar(50) NOT NULL,
+ `Email` varchar(50) NOT NULL,
+ `Passenger_name` text NOT NULL,
+ `Passenger_phone` varchar(50) NOT NULL,
+ `Unit_no` int(10) DEFAULT NULL,
+ `Street_Number` int(10) NOT NULL,
+ `Street` text NOT NULL,
+ `Suburb` text NOT NULL,
+ `Destination_suburb` text NOT NULL,
+ `Pickup_date` date NOT NULL,
+ `Pickup_time` time NOT NULL,
+ `Booking_date` date NOT NULL,
+ `Booking_time` time(6) NOT NULL,
+ `Booking_status` text NOT NULL,
+ PRIMARY KEY (`Booking_id`),
+ KEY `Email` (`Email`),
+ CONSTRAINT `Booking_ibfk_1` FOREIGN KEY (`Email`) REFERENCES `Customer` (`Email`)
+);
